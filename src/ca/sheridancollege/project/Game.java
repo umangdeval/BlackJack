@@ -1,59 +1,47 @@
-/**
- * SYST 17796 Project Base code.
- * Students can modify and extend to implement their game.
- * Add your name as an author and the date!
- */
 package ca.sheridancollege.project;
 
-import java.util.ArrayList;
+import java.util.Scanner;
 
-/**
- * The class that models your game. You should create a more specific child of this class and instantiate the methods
- * given.
- *
- * @author dancye
- * @author Paul Bonenfant
- * @author Prem Parashar
- */
-public abstract class Game {
-
-    private final String name;//the title of the game
-    private ArrayList<Player> players;// the players of the game
-
-    public Game(String name) {
-        this.name = name;
-        players = new ArrayList();
+public class Game {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Welcome to Blackjack!\n");
+        System.out.println("Enter your name: ");
+        String name = in.nextLine();
+        Player player = new Player(name);
+        Blackjack game = new Blackjack(player);
+        int i = 1;
+        while (i >0) {
+            System.out.println("Enter your choice: Draw, Stay, Split or quit");
+            String choice = in.nextLine();
+            if (choice.equalsIgnoreCase("draw")) {
+                if (game.isStatus()) {
+                    game.drawCard();
+                } else
+                {System.out.println("Game restarted");
+                    game = new Blackjack(player);
+                    i++;
+                }
+                
+            } else if (choice.equalsIgnoreCase("split")) {
+                game.split();
+            } else if (choice.equalsIgnoreCase("stay")) {
+                if (game.isStatus()) {
+                    game.steady();
+                } else{System.out.println("Game restarted");
+                game = new Blackjack(player);
+                i++;
+            }
+            } else if (choice.equalsIgnoreCase("quit")) {
+                System.out.println("Thanks for playing");
+                System.out.println("Your score is: " + player.getScore());
+                System.out.println("Number of games played:" + i);
+                break;
+            } else {
+                System.out.println("Invalid choice");
+            }
+        }
+        in.close();
     }
 
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @return the players of this game
-     */
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
-    /**
-     * @param players the players of this game
-     */
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
-    }
-
-    /**
-     * Play the game. This might be one method or many method calls depending on your game.
-     */
-    public abstract void play();
-
-    /**
-     * When the game is over, use this method to declare and display a winning player.
-     */
-    public abstract void declareWinner();
-
-}//end class
+}

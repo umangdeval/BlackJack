@@ -16,14 +16,20 @@ import java.util.Collections;
  * @author Paul Bonenfant
  * @author Prem Parashar
  */
-public class GroupOfCards {
+public class Deck {
 
     //The group of cards, stored in an ArrayList
     private ArrayList<Card> cards;
-    private int size;//the size of the grouping
+    private final int size=52;//the size of the grouping
 
-    public GroupOfCards(int size) {
-        this.size = size;
+    public Deck() {
+        cards = new ArrayList<>();
+        for (Card.suits suit : Card.suits.values()) {
+            for (Card.values value : Card.values.values()) {
+                cards.add(new Card(suit, value));
+            }
+        }
+        shuffle();
     }
 
     /**
@@ -46,11 +52,13 @@ public class GroupOfCards {
         return size;
     }
 
-    /**
-     * @param size the max size for the group of cards
-     */
-    public void setSize(int size) {
-        this.size = size;
+    public Card drawCard()
+    {
+        return getCards().remove(0);
+
+        
     }
+
+   
 
 }//end class

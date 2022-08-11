@@ -11,7 +11,7 @@ package ca.sheridancollege.project;
  * @author Prem Parashar
  * @author dancye
  */
-public abstract class Card {
+public class Card {
     //default modifier for child classes
 
     /**
@@ -19,7 +19,22 @@ public abstract class Card {
      *
      * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
      */
-    @Override
-    public abstract String toString();
+    public enum suits{CLUBS,SPADES,DIAMONDS,HEARTS};
+    public enum values{ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING};
+    private final suits suit;
+    private final values value;
+    public Card(suits suit, values value) {
+        this.suit = suit;
+        this.value = value;
+    }
+    public suits getSuit() {
+        return suit;
+    }
+    public values getValue() {
+        return value;
+    }
+    public String toString() {
+        return value + " of " + suit;
+    }
 
 }
