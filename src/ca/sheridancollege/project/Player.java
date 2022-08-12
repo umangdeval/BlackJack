@@ -6,12 +6,14 @@
 package ca.sheridancollege.project;
 
 
+
 /**
- * A class that models each Player in the game. Players have an identifier, which should be unique.
- *
- * @author dancye
- * @author Paul Bonenfant
- * @author Prem Parashar
+ * This class is used to create a player object that contains the player's name, score, hand, and
+ * whether the hand is split or not.
+ * @author Umang
+ * @author Ankur
+ * @author Nupur 
+ * @author Dhruv
  */
 public  class Player {
 
@@ -20,26 +22,56 @@ public  class Player {
     private Hand[] hand=new Hand[2]; //the hand of this player
     private boolean split=false; //whether this player can split
 
+    /**
+     * This function returns a boolean value that indicates whether the hand is split or not
+     * 
+     * @return The boolean value of the variable split.
+     */
     public boolean isSplit() {
         return split;
     }
 
+    /**
+     * This function sets the split variable to the value of the parameter split
+     * 
+     * @param split If true, the input will be split into multiple lines.
+     */
     public void setSplit(boolean split) {
         this.split = split;
     }
 
+    /**
+     * This function returns the score of the player
+     * 
+     * @return The score of the player.
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * This function sets the score of the player to the score passed in as a parameter
+     * 
+     * @param score The score of the player.
+     */
     public void setScore(int score) {
         this.score = score;
     }
 
+    /**
+     * This function returns the hand array
+     * 
+     * @return The hand array.
+     */
     public Hand[] getHand() {
         return hand;
     }
 
+    /**
+     * This function adds a hand to the player's hand array
+     * 
+     * @param hand The hand that the player is playing with.
+     */
     public void addHand(Hand hand) {
         if(split)
         this.hand[1] = hand;

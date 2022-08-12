@@ -16,12 +16,20 @@ import java.util.Collections;
  * @author Paul Bonenfant
  * @author Prem Parashar
  */
+/**
+ * The Deck class is a collection of cards
+ * @author Umang
+ * @author Ankur
+ * @author Nupur 
+ * @author Dhruv
+ */
 public class Deck {
 
     //The group of cards, stored in an ArrayList
     private ArrayList<Card> cards;
     private final int size=52;//the size of the grouping
 
+    // This is the constructor for the Deck class. It is creating a new deck of cards.
     public Deck() {
         cards = new ArrayList<>();
         for (Card.suits suit : Card.suits.values()) {
@@ -41,6 +49,9 @@ public class Deck {
         return cards;
     }
 
+    /**
+     * The function shuffle() shuffles the cards in the deck
+     */
     public void shuffle() {
         Collections.shuffle(cards);
     }
@@ -52,6 +63,11 @@ public class Deck {
         return size;
     }
 
+    /**
+     * This function removes the first card from the deck and returns it
+     * 
+     * @return The first card in the deck is being removed and returned.
+     */
     public Card drawCard()
     {
         return getCards().remove(0);

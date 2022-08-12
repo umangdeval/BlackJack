@@ -1,10 +1,21 @@
 package ca.sheridancollege.project;
 
+// Importing the ArrayList class from the java.util package.
 import java.util.ArrayList;
 
+/**
+ * This class is a subclass of the Deck class and it is used to create a hand of cards for the player
+ * and the dealer
+ * @author Umang
+ * @author Ankur
+ * @author Nupur 
+ * @author Dhruv
+ */
 public class Hand extends Deck{
     
+    // Creating a new ArrayList of type Card.
     private ArrayList<Card> hand=new ArrayList<Card>();
+    // A variable that is used to store the size of the hand.
     private int handSize;
     
     public Hand() {
@@ -19,25 +30,44 @@ public class Hand extends Deck{
         return hand;
     }
     
+    /**
+     * This function adds a card to the hand of the player
+     */
     public void addCard()
     {
         hand.add(super.drawCard());
         setHandSize();
         handValue();
     }
+    /**
+     * This function removes the first card in the hand array list
+     */
     public void removeCard()
     {
         hand.remove(0);
         setHandSize();
     }
 
+    /**
+     * This function returns the hand size of the player
+     * 
+     * @return The handSize variable is being returned.
+     */
     public int getHandSize() {
         return handSize;
     }
 
+    /**
+     * This function sets the handSize variable to the size of the hand array
+     */
     public void setHandSize() {
         this.handSize = hand.size();
     }
+    /**
+     * This function calculates the value of the hand
+     * 
+     * @return The handValue() method returns the value of the hand.
+     */
     public int handValue()
     {
         setHandSize();
@@ -104,6 +134,7 @@ public class Hand extends Deck{
 }
 
     @Override
+    // Overriding the toString method.
     public String toString() {
         return "Hand has -: "+ hand.toString()+" and the value is "+handValue();
     }
